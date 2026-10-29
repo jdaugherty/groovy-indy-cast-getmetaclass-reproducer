@@ -1,5 +1,7 @@
 # invokedynamic casts call `getMetaClass()` on the value being cast
 
+Reported as [GROOVY-12557](https://issues.apache.org/jira/browse/GROOVY-12557). The fix is proposed in [apache/groovy#3085](https://github.com/apache/groovy/pull/3085), with a backport to `GROOVY_6_0_X` in commit [bc97fa58f1](https://github.com/jdaugherty/groovy/commit/bc97fa58f126beb18d67013110cc5488b198eb16) and to `GROOVY_5_1_X` in commit [0300e782ec](https://github.com/jdaugherty/groovy/commit/0300e782ece81007601006722560b59fa9ba670c).
+
 With invokedynamic (the default since Groovy 4), a cast of a `GroovyObject` that already has the target type, such as
 `Widget widget = value`, calls `value.getMetaClass()`. With classic call sites the same cast calls nothing on the value.
 
